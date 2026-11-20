@@ -1,0 +1,14 @@
+services:
+  order-to-audit:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      DB_PATH: /data/data.sqlite
+      PORT: 3000
+    volumes:
+      - factory-data:/data
+    restart: unless-stopped
+
+volumes:
+  factory-data:
