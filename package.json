@@ -1,0 +1,8 @@
+{
+  "name": "order-to-audit",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ledger-driven order, production and audit prototype for a small food manufacturer",
+  "scripts": { "start": "node start.js", "seed": "node seed.js", "test": "node --test" },
+  "engines": { "node": ">=22.5" }
+}
