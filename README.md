@@ -80,4 +80,4 @@ The demo applies a local GST assumption: same-state TN customer means CGST and S
 
 ## Data and transaction design
 
-See [DESIGN.md](DESIGN.md) for the table map, stock invariants, posting behavior and limits.
+See [ARCHITECTURE.md](ARCHITECTURE.md) for the table map, stock invariants, posting behavior and limits.
