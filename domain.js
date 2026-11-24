@@ -1,6 +1,7 @@
 function stockBalance(movements){return movements.reduce((total,movement)=>total+movement,0)}
 function movingAverageRate(openingQty,openingRatePaise,receiptQty,receiptValuePaise){return receiptQty?Math.round((openingQty*openingRatePaise+receiptValuePaise)/(openingQty+receiptQty)):openingRatePaise}
-function taxBreakdown(taxablePaise,state){let total=Math.round(taxablePaise*.05);return state==='Tamil Nadu'?{cgst:Math.round(total/2),sgst:total-Math.round(total/2),igst:0}:{cgst:0,sgst:0,igst:total}}
+function taxBreakdown(taxablePaise,state,gstRate=5){let total=Math.round(taxablePaise*gstRate/100);return state==='Tamil Nadu'?{cgst:Math.round(total/2),sgst:total-Math.round(total/2),igst:0}:{cgst:0,sgst:0,igst:total}}
 function variancePct(actual,planned){return planned===0?0:(actual-planned)/planned*100}
 function proportionalPart(totalPaise,previousQty,qty,totalQty){if(!Number.isInteger(previousQty)||!Number.isInteger(qty)||!Number.isInteger(totalQty)||previousQty<0||qty<0||totalQty<=0||previousQty+qty>totalQty)throw new RangeError('Invalid proportional quantity');return Math.round(totalPaise*(previousQty+qty)/totalQty)-Math.round(totalPaise*previousQty/totalQty)}
-module.exports={stockBalance,movingAverageRate,taxBreakdown,variancePct,proportionalPart};
+function convertQuantity(value,from,to,cartonSize=1){const units={g:['mass',0.001],kg:['mass',1],ml:['volume',0.001],litre:['volume',1],piece:['count',1],packet:['count',1],carton:['count',cartonSize]};if(!Number.isFinite(+value)||!units[from]||!units[to]||units[from][0]!==units[to][0])throw new RangeError('Incompatible or unknown units');return +value*units[from][1]/units[to][1]}
+module.exports={stockBalance,movingAverageRate,taxBreakdown,variancePct,proportionalPart,convertQuantity};
