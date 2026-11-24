@@ -2,6 +2,12 @@
 
 A runnable internship prototype for a small packaged snack manufacturer. The demo follows an order from salesperson entry through admin approval, GST invoice, dispatch, stock ledger, collections and month end reporting. The production path records a BOM issue, good output, damaged packaging, yield and oil variances, and run cost.
 
+## Live demo
+
+<https://order-to-audit-1lhd.onrender.com>
+
+The free instance spins down after inactivity; the first load may take 30 seconds to wake up.
+
 ## Run locally
 
 Requires Node.js 22.5 or newer (the built-in `node:sqlite` module is used; no package install is needed).
@@ -12,13 +18,9 @@ node start.js
 
 To run the same app in Docker with a persistent SQLite volume, use `docker compose up --build`.
 
-For a hosted demo, the included [render.yaml](render.yaml) provisions a Docker web service and persistent disk when the repository is connected to Render. Set the service port to the platform-provided `PORT` if deploying elsewhere. A live public link still requires deploying this repository under an account.
-
 Open <http://localhost:3000>. Startup seeds the SQLite database only if it has no users. To reset the demo, stop the server, delete `data.sqlite`, then run `node start.js` again. The benchmark button is intentionally one-shot per database so accidental duplicate postings cannot inflate stock. If npm is available, `npm start` and `npm test` are also configured.
 
 Run the arithmetic tests directly with `node --test` (or `npm test` where npm is available).
-
-The suggested walkthrough for an 8-minute submission recording is in [DEMO_SCRIPT.md](DEMO_SCRIPT.md).
 
 ### Demo logins
 
