@@ -2,12 +2,6 @@
 
 A runnable internship prototype for a small packaged snack manufacturer. The demo follows an order from salesperson entry through admin approval, GST invoice, dispatch, stock ledger, collections and month end reporting. The production path records a BOM issue, good output, damaged packaging, yield and oil variances, and run cost.
 
-## Live demo
-
-<https://order-to-audit-1lhd.onrender.com>
-
-The free instance spins down after inactivity; the first load may take 30 seconds to wake up.
-
 ## Run locally
 
 Requires Node.js 22.5 or newer (the built-in `node:sqlite` module is used; no package install is needed).
