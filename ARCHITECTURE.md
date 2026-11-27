@@ -43,6 +43,8 @@ erDiagram
   ORDER_DISPATCHES ||--|{ ORDER_DISPATCH_LINES : details
   PRODUCTS ||--o{ ORDER_DISPATCH_LINES : ships
   INVOICES ||--o{ CREDIT_NOTES : adjusts
+  CREDIT_NOTES ||--|{ CREDIT_NOTE_LINES : contains
+  PRODUCTS ||--o{ CREDIT_NOTE_LINES : returns
   STOCK_SNAPSHOTS ||--|{ STOCK_SNAPSHOT_LINES : captures
   ITEMS ||--o{ STOCK_SNAPSHOT_LINES : counts
 ```
@@ -63,4 +65,4 @@ The API checks roles: salespeople access their own orders; admins manage masters
 
 Run locally with `node start.js` on Node.js 22.5 or newer. Docker Compose is also included. Demo credentials are listed in the README.
 
-This is an internship prototype, not a production accounting deployment: demo passwords are plain text, sessions are in memory, and deployment hardening is required. Batch receipts are traceable but are not allocated FEFO during consumption or dispatch. Finished-goods production output is not assigned a lot. Credit-note stock returns remain tailored to the seeded benchmark SKU. Tally sync, e-invoicing, and route tracking are outside scope.
+This is an internship prototype, not a production accounting deployment: demo passwords are plain text, sessions are in memory, and deployment hardening is required. Batch receipts are traceable but are not allocated FEFO during consumption or dispatch. Finished-goods production output is not assigned a lot. Credit notes track quantities per SKU and accepted returns post to that SKU’s finished-stock ledger. Tally sync, e-invoicing, and route tracking are outside scope.
